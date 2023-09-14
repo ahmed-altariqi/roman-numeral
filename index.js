@@ -16,15 +16,15 @@ const ROMAN_NUMERALS = [
 
 function convertToRoman(num, result = "") {
   for (const [value, romanCharacter] of ROMAN_NUMERALS) {
-    if (value <= num) {
+    if (num >= value) {
       result += romanCharacter;
       num -= value;
-      if (num >= 1000 || num >= value) {
-        return convertToRoman(num, result);
-      }
+    }
+
+    if (num >= value) {
+      return convertToRoman(num, result);
     }
   }
-
   return result;
 }
 
